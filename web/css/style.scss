@@ -1,0 +1,233 @@
+@import 'common';
+@import 'breadcrumbs';
+@import 'left_block';
+@import 'left_menu';
+@import 'pagination';
+
+// Временно
+@import 'calendar';
+
+.index_section1 {
+  height: 100%;
+  max-height: 603px;
+  overflow: hidden;
+}
+
+.main_page_wrapper {
+  height: 100%;
+  margin-bottom: 171px;
+}
+
+.content_row {
+  padding: 20px 20px 8px 20px;
+}
+
+@media (min-width: 768px) {
+  .content_row {
+    padding: 40px 70px 20px 70px;
+  }
+  .main_page_wrapper {
+    height: 100%;
+    margin-bottom: 97px;
+  }
+}
+
+.news {
+  h1 {
+    text-align: center;
+  }
+  hr {
+    margin-left: 15px;
+  }
+}
+
+.pre_header_container {
+  width:100%;
+  display: inline-block;
+  .pre_header {
+    max-width: 1366px;
+    margin:0 auto;
+    min-height:98px;
+    text-align: center;
+  }
+}
+.pre_header_socials {
+  float: none;
+  padding: 0;
+  margin-bottom: 20px;
+  margin-top: 0;
+  a {
+    color: $grey;
+  }
+}
+.pre_header_company_information {
+  padding: 15px;
+  .h3 {
+    margin-top: 10px;
+  }
+}
+.news {
+  h1, .h1 {
+    margin-top: 0;
+    margin-bottom: 42px;
+  }
+}
+.content {
+  padding: 0;
+  padding-bottom: 50px;
+  .h1, h1 {
+    margin-top: 0;
+  }
+  .h4, h4 {
+    margin-top: 20px;
+  }
+  img {
+    max-width: 100%;
+  }
+  p {
+  }
+}
+.news_item_page {
+  .breadcrumbs {
+    padding-left: 15px;
+    margin-bottom: 20px;
+  }
+  .slider {
+    margin: 30px 0 10px 0;
+    max-width: 800px;
+  }
+}
+
+@media (min-width: 768px) {
+  .pre_header_company_information {
+    padding: 29px 25px 0 54px;
+    .h4 {
+      margin-top: 5px;
+    }
+  }
+  .pre_header_socials {
+    padding-right: 13px;
+    float: right;
+    margin-bottom: 35px;
+    margin-top: 40px;
+  }
+}
+
+.contacts {
+  .breadcrumbs {
+
+  }
+  h3 {
+    display: block;
+    padding-top: 15px;
+    //border-top: 1px dashed #e7e7e7;
+  }
+  hr {
+    display: inline;
+  }
+  .info {
+    border-left: 2px solid #50b3e2;
+    @include box-shadow(-25px, 0, 30px, -20px,rgba(0,0,0,0.20));
+    >div {
+      display: inline-block;
+    }
+  }
+  .item {
+    display: inline-block;
+    padding: 0 0 10px 0;
+  }
+  .map {
+    margin-top: 40px;
+    padding: 0;
+  }
+}
+.build_contacts {
+  .info {
+    @include box-shadow(0, 0px, 0px, 0px,rgba(0,0,0,0));
+    border-left: 2px solid #50b3e2;
+  }
+}
+.feedback {
+  .form {
+    padding: 0;
+    input, textarea {
+      display: block;
+      padding: 10px;
+      margin: 10px 0;
+      @include border-radius(10px);
+      outline: none;
+      border: 1px solid $light_grey;
+      width: 100%;
+    }
+    label {
+      display: block;
+      text-align: left;
+      input {
+        display: inline;
+        text-align: left;
+        width: 20px;
+      }
+      font-weight: 100;
+    }
+    .button {
+      margin-top: 20px;
+    }
+  }
+}
+
+.vacancy {
+  .vacancy_item {
+    padding-left: 0;
+    margin-bottom: 20px;
+  }
+  // TOdO вернуться и убрать жирный шрифт в вакансии при загрузке анкеты
+  .upload .field-vacancy-anketa{
+    label {
+      font-weight: 100;
+    }
+  }
+}
+.empty_content {
+  h2, .h2 {
+    //margin-bottom: 20px;
+  }
+  .back_to_home {
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+}
+.empty_left {
+  text-align: left;
+}
+.empty_center {
+  text-align: center;
+}
+
+.owl-nav {
+  .owl-prev, .owl-next {
+    position: absolute;
+    display: block!important;
+    top: 50%;
+    margin-top: -50px!important;
+
+    cursor: pointer;
+    width: 40px;
+    text-align: center;
+    color: white;
+    height: 40px;
+    line-height: 28px;
+    border-radius: 50px!important;
+    border: 2px solid white;
+    font-size: 14px;
+    background: rgba(0,0,0,0.5)!important;
+  }
+  .owl-prev, .owl-next {
+    &:hover {
+      background: rgba(255,255,255, 0.3)!important;
+    }
+  }
+}
+
+.owl-next {
+  right: 0;
+}
