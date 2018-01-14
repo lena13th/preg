@@ -1,0 +1,29 @@
+.footer_container {
+  background: #fafafa;
+  padding: 30px 70px!important;
+  font-size: 26px;
+  text-align: center;
+  font-family: 'ZetaAntFont', Arial, Helvetica, sans-serif;
+}
+
+.main_page_wrapper .footer_container {
+  position: absolute;
+  bottom: 0;
+}
+
+.footer_vk_link {
+  left: 50%;
+  margin-left: -20px;
+  width: 40px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .footer_container {
+    display: flex;
+    justify-content: space-between;
+  }
+  .footer_vk_link {
+    position: absolute;
+  }
+}

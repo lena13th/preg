@@ -1,0 +1,44 @@
+// @import url('https://fonts.googleapis.com/css?family=Roboto:100,200,300i,400,500,700,900&subset=cyrillic,cyrillic-ext');
+@import 'font_icons/font-awesome';
+//@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=cyrillic,cyrillic-ext');
+
+@font-face{
+  font-family: 'AntFont';
+  src: url('../fonts/Ant.ttf');
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'AntFontMedium';
+  src: url('../fonts/AntMedium.ttf');
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'AntFontBold';
+  src: url('../fonts/AntBold.ttf');
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'AntFontLight';
+  src: url('../fonts/AntLight.ttf');
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'ZetaAntFont';
+  src: url('../fonts/ZetaAntFont.otf');
+  font-weight: normal;
+  font-style: italic;
+}
+
+html * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.h1, h1, .h2, h2, .h3, h3, .h4, h4 {
+  font-family: 'ZetaAntFont';
+  font-weight: 800;
+}
