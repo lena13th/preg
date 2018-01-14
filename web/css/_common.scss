@@ -1,0 +1,56 @@
+@import 'fonts';
+@import 'var';
+@import 'mixins';
+@import 'bootstrap_changes';
+@import 'buttons';
+@import 'elements';
+@import 'menu';
+@import 'typography';
+@import 'footer';
+
+html, body {
+	padding: 0;
+	min-height: 100%;
+}
+html {
+	position: relative;
+	min-height: 100%;
+}
+body {
+	margin:0 auto;
+	padding:0;
+}
+.nav_cover {
+	padding: 20px 20px 8px 20px;
+	text-align: left;
+	position: relative;
+	z-index: 2;
+	.nav_line {
+		max-width: 1366px;
+		margin: 0 auto;
+		position: relative;
+	}
+}
+.index_section1 {
+	background: url("../img/bg.jpg") 50% 0% no-repeat;
+}
+.main_wrapper {
+	width: 100%;
+	background: white;
+}
+
+.main {
+	max-width: 1366px;
+	margin: 0 auto;
+	padding: 40px 20px;
+}
+
+@media (min-width: 768px) {
+	.nav_cover {
+		padding: 20px 70px 8px 70px;
+	}
+}
+
+.show {
+	display: block!important;
+}
