@@ -82,8 +82,6 @@ class DiseaseController extends Controller
      */
     public function actionUpdate($id)
     {
-        Yii::$app->cache->flush();
-
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
