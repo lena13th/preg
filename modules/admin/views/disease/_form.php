@@ -21,7 +21,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
     <label for="product-category_id" class="control-label">Категория</label>
-    <select name="Disease[category]" id="product-category_id" class="form-control">
+    <select name="Disease[category_id]" id="product-category_id" class="form-control">
         <option value="0"></option>
         <?= app\modules\admin\components\RelatedCategory::widget(['model'=>$model]) ?>
     </select>

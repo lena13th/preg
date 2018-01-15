@@ -32,7 +32,7 @@ class Disease extends \yii\db\ActiveRecord
         return [
             [['description', 'content','image'], 'string'],
             [['updated_on'], 'safe'],
-            [['published','category'], 'integer'],
+            [['published','category_id'], 'integer'],
             [['name'], 'string', 'max' => 255],
         ];
     }
@@ -49,7 +49,7 @@ class Disease extends \yii\db\ActiveRecord
             'image' => 'Изображение',
             'content' => 'Код для вставки',
             'published' => 'Опубликовано',
-            'category' => 'Категория',
+            'category_id' => 'Категория',
             'updated_on' => 'Updated On',
         ];
     }
