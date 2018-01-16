@@ -65,7 +65,8 @@ $this->params['active_page'][] = 'index';
                     <div class="document_index_circle"></div>
                     <ul id="bool" class="passive cube">
                         <?php foreach ($documents as $key1 => $document): ?>
-                            <?php $img = $documents[((count($documents)-1) - $key1)]->getImage(); ?>
+<!--                            --><?php //$img = $documents[((count($documents)-1) - $key1)]->getImage(); ?>
+                            <?php $img = $documents[$key1]->getImage(); ?>
 <!--                            <li class="slide document_index_image document_index_--><?//=$key1?><!-- --><?//= $key1 === count($documents)-1? 'document_index_image_active': '' ?><!--">-->
 <!--                                <i class="fa fa-search-plus"></i>-->
 <!--                                <img src="--><?//= $documents[((count($documents)-1) - $key1)]->image?><!--" alt="">-->

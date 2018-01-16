@@ -83,11 +83,19 @@ $config = [
 //                'img/' => 'yii2images/images/image-by-item-and-alias',
 
                 '' => 'site/index',
-                'disease/' => 'disease/index',
+                'disease/' => 'disease/new',
+                'disease/<id:\d+>'=>'disease/view',
+
                 'hemostas/' => 'site/hemostas',
-                'article/' => 'site/article',
+                'article/' => 'article/index',
+                'article/<id:\d+>'=>'article/view',
+
                 'reviews/' => 'site/reviews',
                 'contacts/' => 'site/contacts',
+                'services/' => 'services/index',
+                'login/' => 'site/login',
+                'admin/main/' => 'admin/main/view',
+
             ],
         ],
     ],
