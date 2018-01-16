@@ -21,7 +21,7 @@ $(document).ready(function(){
 		$('.ingred').removeClass('ingred_sh');
 		$('.overlay').fadeOut(300);
     }
-    });   
+    });
 	$('body').on('click', '.delimglunch', function ( event ) {
 		event.preventDefault();
 		var id = $(this).attr('id');
@@ -40,7 +40,7 @@ $(document).ready(function(){
 				setTimeout(function(){
 					$this.html('Ошибка <i class="fa fa-close" aria-hidden="true"></i>');
 					$this.addClass('added-red');
-				}, 300);		
+				}, 300);
 			}
 		});
 	});
@@ -67,7 +67,7 @@ $(document).ready(function(){
 				setTimeout(function(){
 					$this.html('Ошибка <i class="fa fa-close" aria-hidden="true"></i>');
 					$this.addClass('added-red');
-				}, 300);		
+				}, 300);
 			}
 		});
 	});
@@ -89,7 +89,7 @@ $(document).ready(function(){
 				setTimeout(function(){
 					$this.html('Ошибка <i class="fa fa-close" aria-hidden="true"></i>');
 					$this.addClass('added-red');
-				}, 300);		
+				}, 300);
 			}
 		});
 	});
@@ -111,10 +111,10 @@ $(document).ready(function(){
 				setTimeout(function(){
 					$this.html('Ошибка <i class="fa fa-close" aria-hidden="true"></i>');
 					$this.addClass('added-red');
-				}, 300);		
+				}, 300);
 			}
 		});
-	});	
+	});
 	$('body').on('click', '.getorderitems', function ( event ) {
 		event.preventDefault();
 		var id = $(this).attr('id');
@@ -133,10 +133,10 @@ $(document).ready(function(){
 				$this=$(this);
 				setTimeout(function(){
 					$this.html('Ошибка <i class="fa fa-close" aria-hidden="true"></i>');
-				}, 300);		
+				}, 300);
 			}
 		});
-	});	
+	});
 	$('body').on('click', '.savecheckproducts', function ( event ) {
 		event.preventDefault();
 		var id = $(this).attr('id');
@@ -145,9 +145,9 @@ $(document).ready(function(){
 		$("input:checked").each(function() {
 			products[i] = {
 				"id":$(this).val(),
-				"name":$(this).next('label').html(),	
-				"text":$(this).nextAll('.checktext').val(),	
-				"price":$(this).nextAll('.checkprice').val(),	
+				"name":$(this).next('label').html(),
+				"text":$(this).nextAll('.checktext').val(),
+				"price":$(this).nextAll('.checkprice').val(),
 			};
 			i++;
 		});
@@ -163,7 +163,7 @@ $(document).ready(function(){
 						$('.savecheckproducts').html('Сохранить набор').addClass('btn-default').removeClass('btn-success');
 						$('.orderitems').fadeOut(500);
 						$('.overlay').fadeOut(600);
-					}, 1000);		
+					}, 1000);
 				} else {
 					$(this).html('Ошибка <i class="fa fa-close" aria-hidden="true"></i>').addClass('btn-danger').removeClass('btn-default');
 				}
@@ -174,7 +174,7 @@ $(document).ready(function(){
 				$(this).html('Ошибка <i class="fa fa-close" aria-hidden="true"></i>').addClass('btn-danger').removeClass('btn-default');
 			}
 		});
-	});		
+	});
 	$('body').on('click', '.close_orderitems, .overlay', function ( event ) {
 		$('.orderitems').fadeOut(300);
 		$('.overlay').fadeOut(300);
@@ -202,10 +202,10 @@ $(document).ready(function(){
         mywindow.document.write('</head><body style="position:relative">');
         mywindow.document.write(data);
         mywindow.document.write('</body></html>');
- 
+
         mywindow.document.close(); // necessary for IE >= 10
         mywindow.focus(); // necessary for IE >= 10
- 
+
         mywindow.print();
         mywindow.close();
         return true;
@@ -241,5 +241,5 @@ $(document).on("click", '.remove_gallery_image', function (e) {
 				$(this).html('Ошибка <i class="fa fa-close" aria-hidden="true"></i>').addClass('btn-danger').removeClass('btn-default');
 			}
 		});
-	}	
+	}
 });

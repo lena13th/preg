@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Url;
+use yii\helpers\Html;
 $this->params['active_page'][] = 'index';
 
 ?>
@@ -20,34 +21,8 @@ $this->params['active_page'][] = 'index';
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-body">
-                                    <div class="h2">Магадеев Тансык Ренатович.</div>
-                                    <p>Врач-гемостазиолог акушер-гинеколог, врач хирург, рентген-хирург, хирургия-эндоскопия, коагулопатолог, ведение беременности.</p>
-                                    <div class="h4">Специалист в области:</div>
-                                    <ul>
-                                        <li>Лапароскопия</li>
-                                        <li>Гистероскопия</li>
-                                        <li>Бесплодие</li>
-                                        <li>Хирургия в гинекологии</li>
-                                        <li>Рентген хирургия</li>
-                                        <li>Оперативные роды</li>
-                                        <li>Ведение беременности при невынашивание, с наследственной тромбофилией, АТ к
-                                            ХГЧ, АФС. Гемостазиология.
-                                        </li>
-                                        <li>Обследование при невынашивании беременности</li>
-                                        <li>Лечение при невынашивании беременности</li>
-                                        <li>Предгравидарная подготовка при замершей беременности.</li>
-                                        <li>Онлайн консультации.</li>
-                                        <li>Эмболизация маточных артерий (ЭМА).</li>
-                                    </ul>
-                                    <div class="h4">Курсы повышения квалификации и первичной специализации:</div>
-                                    <p>2012 - году окончил Башкирский Государственный Медицинский Университет.</p>
-                                    <p>2013 - Первичная специализация по эндоскопии Образовательный Центр Высоких Медицинских Технологий AMTEC KAZAN. г.Казань</p>
-                                    <p>2015 - «Центр сердца, крови и эндокринологии им.Алмазова» г.Санкт-Петербург</p>
-                                    <p>2015 -РУДН "Проблемы невынашивания беременности, врожденной тромбофилии. Основы гемостазиологии и коагулопатологии" г.Москва</p>
-                                    <p>2015 - ФГБУ НАУЧНЫЙ ЦЕНТР АКУШЕРСТВА, ГИНЕКОЛОГИИ И ПЕРИНАТОЛОГИИ имени академика В.И. Кулакова</p>
-                                    <p>Министерства здравоохранения Российской Федерации г.Москва</p>
-                                    <p>2016 - курсы профессиональной переподготовки по специальности «Рентген-эндоваскулярная диагностика и лечение» КГМА г.Казань.</p>
-                                    <p>Участник и докладчик научных конференций.Несколько раз в год посещаю научные семинары и конференции, познаю наиболее современные и глобальные исследования Европы, Великобритании и США.</p>
+                                    <?= $main->full_about ?>
+
                                 </div>
                             </div>
                         </div>
@@ -90,14 +65,19 @@ $this->params['active_page'][] = 'index';
                     <div class="document_index_circle"></div>
                     <ul id="bool" class="passive cube">
                         <?php foreach ($documents as $key1 => $document): ?>
+                            <?php $img = $documents[((count($documents)-1) - $key1)]->getImage(); ?>
 <!--                            <li class="slide document_index_image document_index_--><?//=$key1?><!-- --><?//= $key1 === count($documents)-1? 'document_index_image_active': '' ?><!--">-->
 <!--                                <i class="fa fa-search-plus"></i>-->
 <!--                                <img src="--><?//= $documents[((count($documents)-1) - $key1)]->image?><!--" alt="">-->
 <!--                            </li>-->
-                            <li class="slide document_index_image">
-                                <a href="vk.com"> <i class="fa fa-search-plus"></i></a>
-                                <?= $documents[((count($documents)-1) - $key1)]->image?>
-                            </li>
+                            <?php if($img->filePath != 'no_image.jpg') {?>
+                                <li class="slide document_index_image document_index_image_active">
+                                    <a href="<?= Url::to($img->getPath('1500x'))?>" class="product_image_btn" data-toggle="lightbox" data-gallery="album-gallery"><i class="fa fa-search-plus"></i></a>
+                                    <p>
+                                        <?= Html::img($img->getPath('350x'), ['alt' => $document->title, 'class' => 'img-fluid']) ?>
+                                    </p>
+                                </li>
+                            <?php } ?>
                         <?php endforeach; ?>
                     </ul>
                 </div>

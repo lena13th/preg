@@ -27,14 +27,26 @@ use yii\widgets\ActiveForm;
         ]),
     ]);
     ?>
-    <?= $form->field($model, 'image')->widget(CKEditor::className(), [
-        'editorOptions' => ElFinder::ckeditorOptions('elfinder',[
-            'height' => 100,
-            'preset' => 'full',
-            'inline' => false,
-        ]),
-    ]);
-    ?>
+
+    <?php $img = $model->getImage(); ?>
+    <?php if($img->filePath != 'no_image.jpg') {?>
+        <div>
+            <?= Html::a('Удалить изображение', ['deletephoto', 'id' => $model->id, 'image'=>$img->id, 'g'=>0], ['class' => 'remove_gallery_image', 'data-id'=>$model->id, 'data-g'=>0, 'data-image' => $img->id]) ?><br>
+            <img src="/<?php echo $img->getPath('150x')?>" alt="<?= $model->title ?>">
+        </div>
+
+    <?php } ?>
+
+    <?= $form->field($model, 'image')->fileInput() ?>
+
+<!--    --><?//= $form->field($model, 'image')->widget(CKEditor::className(), [
+//        'editorOptions' => ElFinder::ckeditorOptions('elfinder',[
+//            'height' => 100,
+//            'preset' => 'full',
+//            'inline' => false,
+//        ]),
+//    ]);
+//    ?>
 
 
     <div class="form-group">
