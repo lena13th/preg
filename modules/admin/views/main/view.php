@@ -34,6 +34,10 @@ $this->params['breadcrumbs'][] = 'Редактировать данные';
                 'format' => 'html'
             ],
             [
+                'attribute' => 'full_about',
+                'format' => 'html'
+            ],
+            [
                 'attribute' => 'phone',
                 'format' => 'html'
             ],

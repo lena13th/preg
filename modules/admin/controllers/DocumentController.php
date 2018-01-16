@@ -8,6 +8,7 @@ use app\modules\admin\models\documentSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * DocumentController implements the CRUD actions for document model.
@@ -66,6 +67,14 @@ class DocumentController extends Controller
         $model = new document();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->image = UploadedFile::getInstance($model, 'image');
+            if( $model->image ){
+                $model->upload();
+            }
+            unset($model->image);
+
+            Yii::$app->session->setFlash('success', "Документ сохранен");
+
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -85,6 +94,14 @@ class DocumentController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->image = UploadedFile::getInstance($model, 'image');
+            if( $model->image ){
+                $model->upload();
+            }
+            unset($model->image);
+
+            Yii::$app->session->setFlash('success', "Документ сохранен");
+
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
@@ -106,6 +123,38 @@ class DocumentController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionDeletephoto($id, $image, $g)
+    {
+        $model = $this->findModel($id);
+        if ($g==0) {
+            $img = $model->getImage();
+            $images = $model->getImages();
+            $model->removeImage($img);
+            foreach($images as $imeg){
+                if($imeg->id==$image){
+                    $model->removeImage($imeg);
+                }
+            }
+        } else {
+            $images = $model->getImages();
+            foreach($images as $img){
+                if($img->id==$image){
+                    $model->removeImage($img);
+                }
+            }
+        }
+
+        if (Yii::$app->request->isAjax) {
+            $this->layout = false;
+            return 'success';
+        }
+        else {
+            Yii::$app->session->setFlash('success', "Изображение удалено");
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
+    }
     /**
      * Finds the document model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

@@ -16,6 +16,16 @@ use Yii;
  */
 class Document extends \yii\db\ActiveRecord
 {
+    public $image;
+
+    public function behaviors()
+    {
+        return [
+            'image' => [
+                'class' => 'rico\yii2images\behaviors\ImageBehave',
+            ]
+        ];
+    }
     /**
      * @inheritdoc
      */
@@ -30,11 +40,13 @@ class Document extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'image'], 'required'],
+            [['title'], 'required'],
             [['description'], 'string'],
             [['published'], 'integer'],
             [['updated_on'], 'safe'],
-            [['title', 'image'], 'string', 'max' => 255],
+            [['title'], 'string', 'max' => 255],
+            [['image'], 'file', 'extensions' => 'png, jpg'],
+
         ];
     }
 
@@ -52,4 +64,19 @@ class Document extends \yii\db\ActiveRecord
             'updated_on' => 'Updated On',
         ];
     }
+
+    public function upload(){
+        if($this->validate()){
+//            $path = 'img/' . $this->image->baseName . '.' . $this->image->extension;
+            $path = $this->image->baseName . '.' . $this->image->extension;
+            $this->image->saveAs($path);
+            $this->attachImage($path, true);
+            @unlink($path);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
 }

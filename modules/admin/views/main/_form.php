@@ -40,6 +40,14 @@ use mihaildev\elfinder\ElFinder;
         ]),
     ]);
     ?>
+    <?= $form->field($model, 'full_about')->widget(CKEditor::className(), [
+        'editorOptions' => ElFinder::ckeditorOptions('elfinder',[
+            'height' => 100,
+            'preset' => 'full',
+            'inline' => false,
+        ]),
+    ]);
+    ?>
     <?= $form->field($model, 'phone')->widget(CKEditor::className(), [
         'editorOptions' => ElFinder::ckeditorOptions('elfinder',[
             'height' => 100,

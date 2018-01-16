@@ -33,7 +33,7 @@ class Main extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['description', 'mission', 'about', 'field_contacts'], 'string'],
+            [['description', 'mission', 'about','full_about', 'field_contacts'], 'string'],
             [['updated_on'], 'safe'],
             [['name'], 'string', 'max' => 255],
             [['phone', 'email'], 'string', 'max' => 100],
@@ -51,6 +51,7 @@ class Main extends \yii\db\ActiveRecord
             'description' => 'Описание',
             'mission' => 'Цель сайта',
             'about' => 'Обо мне',
+            'full_about' => 'Подробнее о специализации',
             'phone' => 'Телефон',
             'email' => 'Email',
             'field_contacts' => 'Поле на странице контакты',
