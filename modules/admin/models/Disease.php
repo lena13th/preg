@@ -10,11 +10,22 @@ use Yii;
  * @property integer $id
  * @property string $name
  * @property string $description
+ * @property string $image
  * @property string $content
  * @property string $updated_on
  */
 class Disease extends \yii\db\ActiveRecord
 {
+    public $image;
+
+    public function behaviors()
+    {
+        return [
+            'image' => [
+                'class' => 'rico\yii2images\behaviors\ImageBehave',
+            ]
+        ];
+    }
 
     /**
      * @inheritdoc
@@ -30,10 +41,11 @@ class Disease extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['description', 'content','image'], 'string'],
+            [['description', 'content'], 'string'],
             [['updated_on'], 'safe'],
             [['published','category_id'], 'integer'],
             [['name'], 'string', 'max' => 255],
+            [['image'], 'file', 'extensions' => 'png, jpg'],
         ];
     }
 
@@ -52,5 +64,18 @@ class Disease extends \yii\db\ActiveRecord
             'category_id' => 'Категория',
             'updated_on' => 'Updated On',
         ];
+    }
+
+    public function upload(){
+        if($this->validate()){
+//            $path = 'img/' . $this->image->baseName . '.' . $this->image->extension;
+            $path = $this->image->baseName . '.' . $this->image->extension;
+            $this->image->saveAs($path);
+            $this->attachImage($path, true);
+            @unlink($path);
+            return true;
+        } else {
+            return false;
+        }
     }
 }
