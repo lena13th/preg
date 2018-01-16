@@ -25,21 +25,24 @@ $this->params['breadcrumbs'][] = $this->title;
 
 //            'id',
             'title',
-            'description:ntext',
             [
+                'attribute' => 'description',
+                'format' => 'html'
+            ],
+                [
                 'attribute' => 'published',
-                'filter' => ['0' => 'Не опубликовано', '1' => 'Опубликовано'],
+                'filter' => ['0' => 'Нет', '1' => 'Да'],
                 'value' => function($data) {
                     if($data->published==1) {
-//                        return '<span style="color:green;">Опубликовано</span>';
-                        return 'Опубликовано';
+                        return '<span style="color:green;">Опубликовано</span>';
+//                        return 'Опубликовано';
                     }
                     else {
-//                        return '<span class="text-danger">Не опубликовано</span>';
-                        return 'Не опубликовано';
+                        return '<span class="text-danger">Не опубликовано</span>';
+//                        return 'Не опубликовано';
                     }
                 },
-//                'format' => 'html'
+                'format' => 'html'
 
             ],
 //            'image',
