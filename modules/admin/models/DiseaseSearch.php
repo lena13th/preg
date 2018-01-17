@@ -10,7 +10,7 @@ use app\modules\admin\models\disease;
 /**
  * DiseaseSearch represents the model behind the search form about `app\modules\admin\models\disease`.
  */
-class DiseaseSearch extends disease
+class DiseaseSearch extends Disease
 {
     /**
      * @inheritdoc

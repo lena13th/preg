@@ -10,7 +10,7 @@ use app\modules\admin\models\document;
 /**
  * documentSearch represents the model behind the search form about `app\modules\admin\models\document`.
  */
-class documentSearch extends document
+class documentSearch extends \app\modules\admin\models\Document
 {
     /**
      * @inheritdoc
