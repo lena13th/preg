@@ -3,8 +3,8 @@
 namespace app\modules\admin\controllers;
 
 use Yii;
-use app\modules\admin\models\document;
-use app\modules\admin\models\documentSearch;
+use app\modules\admin\models\Document;
+use app\modules\admin\models\DocumentSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

@@ -3,7 +3,7 @@
 namespace app\modules\admin\controllers;
 
 use Yii;
-use app\modules\admin\models\disease;
+use app\modules\admin\models\Disease;
 use app\modules\admin\models\DiseaseSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
