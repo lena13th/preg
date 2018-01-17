@@ -13,7 +13,7 @@ $this->params['active_page'][] = 'reviews';
 <h1>Отзывы</h1>
 
 <script type="text/javascript">
-    VK.init({apiId: 6329820, onlyWidgets: true});
+    VK.init({apiId: 6335899, onlyWidgets: true});
 </script>
 
 <!-- Put this div tag to the place, where the Comments block will be -->
