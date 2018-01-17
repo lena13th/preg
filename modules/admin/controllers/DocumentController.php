@@ -73,7 +73,7 @@ class DocumentController extends Controller
             }
             unset($model->image);
 
-            Yii::$app->session->setFlash('success', "Документ сохранен");
+            Yii::$app->session->setFlash('success', "Изменения сохранены");
 
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -100,7 +100,7 @@ class DocumentController extends Controller
             }
             unset($model->image);
 
-            Yii::$app->session->setFlash('success', "Документ сохранен");
+            Yii::$app->session->setFlash('success', "Изменения сохранены");
 
             return $this->redirect(['view', 'id' => $model->id]);
         } else {

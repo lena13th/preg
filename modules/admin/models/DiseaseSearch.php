@@ -60,6 +60,7 @@ class DiseaseSearch extends disease
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'published' => $this->published,
             'updated_on' => $this->updated_on,
         ]);
 

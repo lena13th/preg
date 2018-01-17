@@ -34,6 +34,12 @@ use yii\bootstrap\ActiveForm;
 $this->title = 'Авторизация';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<ul class="breadcrumbs col-xs-12 col-md-12">
+    <li><a href="<?= Url::to(['/site/index']) ?>"><i class="fa fa-home"></i>Главная</a></li>
+    <li>Авторизация</li>
+</ul>
+
+
 <div class="site-login">
     <?php // Yii::$app->getSecurity()->generatePasswordHash('123');?>
     <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4">

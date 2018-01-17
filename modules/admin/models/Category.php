@@ -17,6 +17,16 @@ use Yii;
 class Category extends \yii\db\ActiveRecord
 {
 
+    public $image;
+
+    public function behaviors()
+    {
+        return [
+            'image' => [
+                'class' => 'rico\yii2images\behaviors\ImageBehave',
+            ]
+        ];
+    }
 
     /**
      * @inheritdoc
@@ -34,9 +44,11 @@ class Category extends \yii\db\ActiveRecord
         return [
             [['name'], 'required'],
             [['published'], 'integer'],
-            [['description', 'image'], 'string'],
+            [['description'], 'string'],
             [['updated_on'], 'safe'],
             [['name'], 'string', 'max' => 255],
+            [['image'], 'file', 'extensions' => 'png, jpg'],
+
         ];
     }
 
@@ -54,4 +66,17 @@ class Category extends \yii\db\ActiveRecord
             'updated_on' => 'Updated On',
         ];
     }
+    public function upload(){
+        if($this->validate()){
+//            $path = 'img/' . $this->image->baseName . '.' . $this->image->extension;
+            $path = $this->image->baseName . '.' . $this->image->extension;
+            $this->image->saveAs($path);
+            $this->attachImage($path, true);
+            @unlink($path);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

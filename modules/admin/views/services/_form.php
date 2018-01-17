@@ -35,16 +35,18 @@ use mihaildev\elfinder\ElFinder;
         ]),
     ]);
     ?>
-
-    <?= $form->field($model, 'image')->widget(CKEditor::className(), [
-        'editorOptions' => ElFinder::ckeditorOptions('elfinder',[
-            'height' => 100,
-            'preset' => 'full',
-            'inline' => false,
-        ]),
-    ]);
-    ?>
     <?= $form->field($model, 'price')->textInput(['maxlength' => true]) ?>
+
+    <?php $img = $model->getImage(); ?>
+    <?php if($img->filePath != 'no_image.jpg') {?>
+        <div>
+            <?= Html::a('Удалить изображение', ['deletephoto', 'id' => $model->id, 'image'=>$img->id, 'g'=>0], ['class' => 'remove_gallery_image', 'data-id'=>$model->id, 'data-g'=>0, 'data-image' => $img->id]) ?><br>
+            <img src="/<?php echo $img->getPath('150x')?>" alt="<?= $model->name ?>">
+        </div>
+
+    <?php } ?>
+
+    <?= $form->field($model, 'image')->fileInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>

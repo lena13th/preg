@@ -26,7 +26,6 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
-    <?php $img = $model->getImage(); ?>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -46,19 +45,31 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'description',
                 'format' => 'html'
             ],
-            [
-                'attribute' => 'image',
-                'value' => '
-                    <div class="prod_img_button"  style="width:150px; display:inline-block;">
-                        <a href="'.Url::to($img->getPath('800x')).'" class="product_image_btn lightbox">'.
-//                    Html::img($img->getPath('150x'), ['alt' => $model->title, 'class' => 'product_image img-fluid']).
-                '<img src="/'.$img->getPath('150x').'" alt="'.$model->title.'">'.
-                    '<i class="fa fa-search-plus" aria-hidden="true" style="font-size: 20px; width: 100%; height: 100%; padding-top: 40px; padding-left: auto;"></i>
-                        </a>
-                    </div>',
-                'format' => 'html',
-            ],
+//            [
+//                'attribute' => 'image',
+//                'value' =>
+////                    <div class="prod_img_button"  style="width:150px; display:inline-block;">
+////                        <a href="/'.Url::to($img->getPath('800x')).'" class="product_image_btn lightbox">'.
+//////                    Html::img($img->getPath('150x'), ['alt' => $model->title, 'class' => 'product_image img-fluid']).
+////                '<img src="/'.$img->getPath('150x').'" alt="'.$model->title.'">'
+////                    '<i class="fa fa-search-plus" aria-hidden="true" style="font-size: 20px; width: 100%; height: 100%; padding-top: 40px; padding-left: auto;"></i>
+////                        </a>
+////                    </div>',
+//                    ,
+//                'format' => 'html',
+//            ],
         ],
     ]) ?>
+    <?php $img = $model->getImage(); ?>
 
+    <?php if($img->filePath != 'no_image.jpg') { ?>
+
+                <div class="prod_img_button" style="width:150px; display:inline-block;">
+                    <a href="<?= Url::to('/'.$img->getPath('1500x'))?>" class="product_image_btn lightbox" data-toggle="lightbox">
+                        <img src="/<?= $img->getPath('150x')?>" alt="<?= $model->title?>">
+                        <i class="fa fa-search-plus" aria-hidden="true" style="font-size: 20px; width: 100%; height: 100%; padding-top: 40px; padding-left: auto;"></i>
+                    </a>
+                </div>
+
+    <?php } ?>
 </div>

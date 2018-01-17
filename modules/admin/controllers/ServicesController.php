@@ -8,6 +8,7 @@ use app\modules\admin\models\ServicesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * ServicesController implements the CRUD actions for Services model.
@@ -67,12 +68,21 @@ class ServicesController extends Controller
         $model = new Services();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
+            $model->image = UploadedFile::getInstance($model, 'image');
+            if( $model->image ){
+                $model->upload();
+            }
+            unset($model->image);
 
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+            Yii::$app->session->setFlash('success', "Изменения сохранены");
+
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+
+            return $this->render('create', [
+                'model' => $model,
+            ]);
+        }
     }
 
     /**
@@ -87,12 +97,21 @@ class ServicesController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
+            $model->image = UploadedFile::getInstance($model, 'image');
+            if( $model->image ){
+                $model->upload();
+            }
+            unset($model->image);
 
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+            Yii::$app->session->setFlash('success', "Изменения сохранены");
+
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
     }
 
     /**
@@ -108,7 +127,38 @@ class ServicesController extends Controller
 
         return $this->redirect(['index']);
     }
+    public function actionDeletephoto($id, $image, $g)
+    {
+        $model = $this->findModel($id);
+        if ($g==0) {
+            $img = $model->getImage();
+            $images = $model->getImages();
+            $model->removeImage($img);
+            foreach($images as $imeg){
+                if($imeg->id==$image){
+                    $model->removeImage($imeg);
+                }
+            }
+        } else {
+            $images = $model->getImages();
+            foreach($images as $img){
+                if($img->id==$image){
+                    $model->removeImage($img);
+                }
+            }
+        }
 
+        if (Yii::$app->request->isAjax) {
+            $this->layout = false;
+            return 'success';
+        }
+        else {
+            Yii::$app->session->setFlash('success', "Изображение удалено");
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
+    }
     /**
      * Finds the Services model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

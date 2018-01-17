@@ -27,11 +27,29 @@ $this->params['breadcrumbs'][] = $this->title;
 
 //            'id',
             'name',
-            'description:ntext',
+            [
+                'attribute' => 'description',
+                'format' => 'html'
+            ],
 //            'content:ntext',
 //            'image:ntext',
             //'price',
-            'published',
+            [
+                'attribute' => 'published',
+                'filter' => ['0' => 'Нет', '1' => 'Да'],
+                'value' => function($data) {
+                    if($data->published==1) {
+                        return '<span style="color:green;">Опубликовано</span>';
+//                        return 'Опубликовано';
+                    }
+                    else {
+                        return '<span class="text-danger">Не опубликовано</span>';
+//                        return 'Не опубликовано';
+                    }
+                },
+                'format' => 'html'
+
+            ],
             //'updated_on',
 
             ['class' => 'yii\grid\ActionColumn'],

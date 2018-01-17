@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
@@ -28,14 +29,45 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-//            'id',
+            [
+                'attribute' => 'published',
+                'value' => function($data) {
+                    if($data->published==1) {
+                        return 'Да';
+                    }
+                    else {
+                        return 'Нет';
+                    }
+                },
+            ],
             'title',
-            'description:ntext',
-            'content:ntext',
+            [
+                'attribute' => 'description',
+                'format' => 'html'
+            ],
+            [
+                'attribute' => 'content',
+                'format' => 'html'
+            ],
+
+
+//            'id',
 //            'code:ntext',
 //            'published',
 //            'updated_on',
         ],
     ]) ?>
+    <?php $img = $model->getImage(); ?>
+
+    <?php if($img->filePath != 'no_image.jpg') { ?>
+
+        <div class="prod_img_button" style="width:150px; display:inline-block;">
+            <a href="<?= Url::to('/'.$img->getPath('1500x'))?>" class="product_image_btn lightbox" data-toggle="lightbox">
+                <img src="/<?= $img->getPath('150x')?>" alt="<?= $model->title?>">
+                <i class="fa fa-search-plus" aria-hidden="true" style="font-size: 20px; width: 100%; height: 100%; padding-top: 40px; padding-left: auto;"></i>
+            </a>
+        </div>
+
+    <?php } ?>
 
 </div>
