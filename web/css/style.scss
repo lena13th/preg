@@ -175,18 +175,6 @@
   }
 }
 
-.vacancy {
-  .vacancy_item {
-    padding-left: 0;
-    margin-bottom: 20px;
-  }
-  // TOdO вернуться и убрать жирный шрифт в вакансии при загрузке анкеты
-  .upload .field-vacancy-anketa{
-    label {
-      font-weight: 100;
-    }
-  }
-}
 .empty_content {
   h2, .h2 {
     //margin-bottom: 20px;
@@ -230,4 +218,24 @@
 
 .owl-next {
   right: 0;
+}
+
+.page_item_row {
+  padding-top: 20px;
+}
+
+.page_item_block {
+  width: 100%;
+  display: inline-block;
+  padding: 20px;
+  border: 1px solid #f4f4f4;
+  background: rgba(241, 245, 247, 0.41);
+  @include border-radius(5px);
+}
+
+.page_item_image {
+  margin: 20px 0;
+  img {
+    max-width: 100%;
+  }
 }

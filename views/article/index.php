@@ -13,17 +13,19 @@ $this->params['active_page'][] = 'article';
     <?= $page_article->content   ?>
     <?php if (!(empty($articles))): ?>
 
-        <div class="row">
+        <div class="row page_item_row">
             <?php foreach ($articles as $key1 => $article): ?>
                 <div class="col-xs-12 col-sm-6 col-md-4">
-                    <div class="h4"><?= $article->title ?></div>
-                    <div>
-                        <?//= $disease->description ?>
-                        <?php $img = $articles[$key1]->getImage(); ?>
+                    <div class="page_item_block">
+                        <div class="h4"><?= $article->title ?></div>
+                        <div class="page_item_image">
+                            <?//= $disease->description ?>
+                            <?php $img = $articles[$key1]->getImage(); ?>
 
-                        <?= Html::img($img->getPath('350x'), ['alt' => $article->title, 'class' => 'img-fluid']) ?>
+                            <?= Html::img($img->getPath('350x'), ['alt' => $article->title, 'class' => 'img-fluid']) ?>
+                        </div>
+                        <a class="btn btn-primary" href="<?= Url::to(['/article/view', 'id' => $article->id]) ?>"> Подробнее</a>
                     </div>
-                    <a class="btn btn-primary" href="<?= Url::to(['/article/view', 'id' => $article->id]) ?>"> Подробнее</a>
                 </div>
             <?php endforeach; ?>
         </div>

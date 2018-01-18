@@ -2886,30 +2886,26 @@ body {
   display: block !important; }
 
 .breadcrumbs {
-  padding: 33px 0 0 25px; }
+  margin-bottom: 20px;
+  border: 1px solid #f4f4f4;
+  background: rgba(241, 245, 247, 0.41);
+  -webkit-border-radius: 5px !important;
+  -moz-border-radius: 5px !important;
+  -ms-border-radius: 5px !important;
+  border-radius: 5px !important;
+  padding: 20px; }
 
 .breadcrumbs li {
   list-style: none;
-  display: inline-block;
-  /* margin: 47px 0 50px 10px; */
-  margin-top: 10px; }
+  display: inline-block; }
   .breadcrumbs li i {
     margin-right: 5px; }
-  .breadcrumbs li a {
-    text-decoration: underline;
-    padding-bottom: 2px; }
 
 .breadcrumbs li:not(:last-child):after {
   content: '>';
   margin: 0 8px 0 13px; }
 
-@media (min-width: 1200px) {
-  .breadcrumbs {
-    padding: 33px 0 0 10px;
-    margin-bottom: 0; } }
 .breadcrumbs_left {
-  padding-left: 35px !important;
-  padding-right: 20px;
   padding-left: 35px !important;
   padding-right: 20px;
   max-width: 1366px;
@@ -3373,12 +3369,6 @@ body {
   .feedback .form .button, .feedback .form input[type='button'] {
     margin-top: 20px; }
 
-.vacancy .vacancy_item {
-  padding-left: 0;
-  margin-bottom: 20px; }
-.vacancy .upload .field-vacancy-anketa label {
-  font-weight: 100; }
-
 .empty_content .back_to_home {
   margin: 0 auto;
   margin-top: 20px; }
@@ -3409,5 +3399,24 @@ body {
 
 .owl-next {
   right: 0; }
+
+.page_item_row {
+  padding-top: 20px; }
+
+.page_item_block {
+  width: 100%;
+  display: inline-block;
+  padding: 20px;
+  border: 1px solid #f4f4f4;
+  background: rgba(241, 245, 247, 0.41);
+  -webkit-border-radius: 5px !important;
+  -moz-border-radius: 5px !important;
+  -ms-border-radius: 5px !important;
+  border-radius: 5px !important; }
+
+.page_item_image {
+  margin: 20px 0; }
+  .page_item_image img {
+    max-width: 100%; }
 
 /*# sourceMappingURL=style.css.map */
