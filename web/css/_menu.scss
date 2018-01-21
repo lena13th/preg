@@ -75,10 +75,12 @@
   .menu {
     list-style: none;
     padding: 0;
+    li {
+      padding: 15px 7px;
+    }
     li a, li span {
       text-transform: uppercase;
       text-decoration: none;
-      padding: 15px 7px;
       display: inline-block;
       cursor: pointer;
     }
@@ -169,13 +171,17 @@
   .site_descr_button {
     margin-top: 15px;
   }
+}
+.index_vk_link {
+  position: absolute;
+  bottom: 30px;
+  font-size: 24px;
+  color: white!important;
+}
 
-  .main_vk_link {
-    position: absolute;
-    bottom: 30px;
-    font-size: 24px;
-    color: white!important;
-  }
+.main_vk_link {
+  font-size: 24px;
+  color: $grey!important;
 }
 
 /* FULLSIZE MENU */
@@ -225,7 +231,7 @@
           display: none;
         }
       }
-      li:first-child a, li:first-child span {
+      li:first-child, li:first-child {
         padding-left: 0;
       }
       //li>span:after {
@@ -238,6 +244,9 @@
       }
       li .submenu {
         position: absolute;
+      }
+      >li.active a {
+        border-bottom: 1px solid $blue;
       }
       >li.active::before {
         content: '';
@@ -282,19 +291,6 @@
           //text-transform: uppercase;
         }
       }
-      //>li.active::before {
-      //  content: '';
-      //  border-right: 15px solid transparent;
-      //  border-left: 15px solid transparent;
-      //  border-bottom: 9px solid white;
-      //  border-top: 0px;
-      //  width: 0;
-      //  height: 0;
-      //  position: absolute;
-      //  top: 64px;
-      //  left: 50%;
-      //  margin-left: -15px;
-      //}
     }
   }
 }

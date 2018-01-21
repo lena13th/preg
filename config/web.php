@@ -5,6 +5,7 @@ $db = require __DIR__ . '/db.php';
 $baseUrl = str_replace('/web', '', (new \yii\web\Request)->getBaseUrl());
 
 $config = [
+    'name' => 'Беременность +',
     'id' => 'basic',
     'language' => 'ru-RU',
     'basePath' => dirname(__DIR__),
@@ -38,6 +39,35 @@ $config = [
             'placeHolderPath' => '@webroot/img/no_image.jpg', // if you want to get placeholder when image not exists, string will be processed by Yii::getAlias
 //            'imageCompressionQuality' => 100, // Optional. Default value is 85.
         ],
+        'user' => [
+            'class' => 'dektrium\user\Module',
+            'enableRegistration' => false,
+            'confirmWithin' => 21600,
+            'cost' => 12,
+            'admins' => ['admin', 'rustvk'],
+            'mailer' => [
+                'sender'                => 'mr-15@mail.ru', // or ['no-reply@myhost.com' => 'Sender name']
+                'welcomeSubject'        => 'Регистрация на сайте Беременность +',
+                'confirmationSubject'   => 'Подтверждения смены пароля',
+                'reconfirmationSubject' => 'Подтверждения смены email',
+                'recoverySubject'       => 'Восстановление аккаунта',
+
+
+//                'class' => 'yii\swiftmailer\Mailer',
+                // send all mails to a file by default. You have to set
+                // 'useFileTransport' to false and configure a transport
+                // for the mailer to send real emails.
+//                'useFileTransport' => false,
+//                'transport' => [
+//                    'class' => 'Swift_SmtpTransport',
+//                    'host'=>'smtp.mail.ru',
+//                    'username' => 'mr-15@mail.ru',
+//                    'password' => 'nokia5530xpressmusic',
+//                    'port' => '465',
+//                    'encryption' => 'ssl',
+//                ],
+            ]
+        ],
     ],
     'components' => [
         'request' => [
@@ -48,10 +78,10 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
-        'user' => [
-            'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
-        ],
+//        'user' => [
+//            'identityClass' => 'app\models\User',
+//            'enableAutoLogin' => true,
+//        ],
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
@@ -60,7 +90,15 @@ $config = [
             // send all mails to a file by default. You have to set
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
-            'useFileTransport' => true,
+            'useFileTransport' => false,
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host'=>'smtp.mail.ru',
+                'username' => 'mr-15@mail.ru',
+                'password' => 'nokia5530xpressmusic',
+                'port' => '465',
+                'encryption' => 'ssl',
+            ],
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -78,7 +116,7 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                'images/' => '/images/image-by-item-and-alias',
+//                'images/' => '/images/image-by-item-and-alias',
 //                'images/' => 'yii2images/images/image-by-item-and-alias',
 //                'img/' => 'yii2images/images/image-by-item-and-alias',
 

@@ -18,14 +18,7 @@ use mihaildev\elfinder\ElFinder;
     </div>
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'description')->widget(CKEditor::className(), [
-        'editorOptions' => ElFinder::ckeditorOptions('elfinder',[
-            'height' => 100,
-            'preset' => 'full',
-            'inline' => false,
-        ]),
-    ]);
-    ?>
+    <?= $form->field($model, 'description'); ?>
 
     <?= $form->field($model, 'content')->widget(CKEditor::className(), [
         'editorOptions' => ElFinder::ckeditorOptions('elfinder',[

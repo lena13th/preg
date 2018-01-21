@@ -6,12 +6,6 @@ use yii\helpers\Url;
 <nav class="nav_line">
     <?php $this->beginContent('@app/views/layouts/menu.php'); ?>
     <?php $this->endContent(); ?>
-    <button type="button" class="navbar-toggle">
-        <span class="sr-only">Меню</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-    </button>
     <div class="main_block">
         <div class="site_main">
             <div class="site_title_back"><noindex>Беременность +</noindex></div>
@@ -22,8 +16,17 @@ use yii\helpers\Url;
                 <br>
                 <?= CompanyWidget::widget(['object' => 'description']); ?>
             </div>
-            <div class="btn btn-primary site_descr_button">Знакомство с сайтом</div>
+            <a class="btn btn-primary site_descr_button" href="#page2">
+                <div class="fdown">
+                    <span class="fdowntext">Знакомство с сайтом</span>
+                </div>
+            </a>
         </div>
-        <a href="https://vk.com" class="main_vk_link" target="_blank"><i class="fa fa-vk"></i></a>
+        <?php
+            $vk = CompanyWidget::widget(['object'=>'vk'])
+        ?>
+        <?php if ($vk) { ?>
+        <a href="<?= $vk ?>" class="index_vk_link" target="_blank"><i class="fa fa-vk"></i></a>
+        <?php } ?>
     </div>
 </nav>

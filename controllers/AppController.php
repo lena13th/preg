@@ -4,8 +4,8 @@ namespace app\controllers;
 
 use Yii;
 use yii\web\Controller;
-use app\models\Main;        // Модель Company отвечает за подключение к таблице информации о компании в бд
 use yii\caching\DbDependency;
+use app\models\Main;
 
 
 class AppController extends Controller
@@ -18,19 +18,19 @@ class AppController extends Controller
         $this->view->registerMetaTag(['name' => 'description', 'content' => "$description"]);
     }
 
-//    protected function getCompany()
-//    {
-//        Yii::$app->cache->flush();
-//
-//        $dependency = new DbDependency([
-//            'sql' => 'SELECT MAX(updated_on) FROM company',
-//        ]);
-//
-//        $company = Yii::$app->db->cache(function ($db) {
-//            return Main::findOne(Yii::$app->params['company_id']);
-//        }, 0, $dependency);
-//        return $company;
-//    }
+    protected function getCompany()
+    {
+        Yii::$app->cache->flush();
+
+        $dependency = new DbDependency([
+            'sql' => 'SELECT MAX(updated_on) FROM main',
+        ]);
+
+        $company = Yii::$app->db->cache(function ($db) {
+            return Main::findOne(Yii::$app->params['company_id']);
+        }, 0, $dependency);
+        return $company;
+    }
 
 }
 

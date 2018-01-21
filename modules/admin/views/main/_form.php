@@ -12,7 +12,7 @@ use mihaildev\elfinder\ElFinder;
 
 <div class="main-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
@@ -48,22 +48,10 @@ use mihaildev\elfinder\ElFinder;
         ]),
     ]);
     ?>
-    <?= $form->field($model, 'phone')->widget(CKEditor::className(), [
-        'editorOptions' => ElFinder::ckeditorOptions('elfinder',[
-            'height' => 100,
-            'preset' => 'full',
-            'inline' => false,
-        ]),
-    ]);
-    ?>
-    <?= $form->field($model, 'email')->widget(CKEditor::className(), [
-        'editorOptions' => ElFinder::ckeditorOptions('elfinder',[
-            'height' => 100,
-            'preset' => 'full',
-            'inline' => false,
-        ]),
-    ]);
-    ?>
+    <?= $form->field($model, 'phone'); ?>
+    <?= $form->field($model, 'email'); ?>
+    <?= $form->field($model, 'vk'); ?>
+    <?= $form->field($model, 'avtor_vk'); ?>
     <?= $form->field($model, 'field_contacts')->widget(CKEditor::className(), [
         'editorOptions' => ElFinder::ckeditorOptions('elfinder',[
             'height' => 100,
@@ -72,6 +60,16 @@ use mihaildev\elfinder\ElFinder;
         ]),
     ]);
     ?>
+    <?php $img = $model->getImage(); ?>
+    <?php if($img->filePath != 'no_image.jpg') {?>
+        <div>
+            <?= Html::a('Удалить изображение', ['deletephoto', 'id' => $model->id, 'image'=>$img->id, 'g'=>0], ['class' => 'remove_gallery_image', 'data-id'=>$model->id, 'data-g'=>0, 'data-image' => $img->id]) ?><br>
+            <img src="/<?php echo $img->getPath('150x')?>" alt="<?= $model->name ?>">
+        </div>
+
+    <?php } ?>
+
+    <?= $form->field($model, 'image')->fileInput() ?>
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Сохранить' : 'Сохранить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>

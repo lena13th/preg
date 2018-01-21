@@ -34,7 +34,7 @@ class DiseaseController extends AppController
             return Page::find()->where(['alias' => 'disease'])->one();
         }, 60, $dependency1);
 
-        $this->setMeta('Болезни', '', 'Болезни. Блог врача-хирурга Тансык Магадеева');
+        $this->setMeta('Болезни', '', 'Болезни. Блог врача-хирурга. Тансык Магадеев');
 
         return $this->render('new',compact( 'categories','page_disease'));
     }
@@ -44,7 +44,7 @@ class DiseaseController extends AppController
         $disease = Disease::find()->where(['published' => 1])->andWhere(['id' => $id])->one();
         if (empty($disease)) throw new \yii\web\HttpException(404, 'К сожалению, такой болезни не найдено.');
 
-        $this->setMeta($disease->name, '', 'Болезни');
+        $this->setMeta($disease->name, '', $disease->description);
         return $this->render('view', compact('disease'));
     }
 

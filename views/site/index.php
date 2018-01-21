@@ -5,7 +5,7 @@ use yii\helpers\Html;
 $this->params['active_page'][] = 'index';
 
 ?>
-<div class="content_wrapper">
+<div class="content_wrapper" id="page2">
     <div class="content_row">
         <div class="row">
             <div class="left_conent col-xs-12 col-sm-8">
@@ -16,14 +16,24 @@ $this->params['active_page'][] = 'index';
                 <div class="left_padding_20 h3">Пару слов о себе</div>
                 <div class="about_index_block">
                     <?= $main->about ?>
+                    <?php $avtor_img = $main->getImage(); ?>
+                    <!--                            <li class="slide document_index_image document_index_--><?//=$key1?><!-- --><?//= $key1 === count($documents)-1? 'document_index_image_active': '' ?><!--">-->
+                    <!--                                <i class="fa fa-search-plus"></i>-->
+                    <!--                                <img src="--><?//= $documents[((count($documents)-1) - $key1)]->image?><!--" alt="">-->
+                    <!--                            </li>-->
+                    <?php if($avtor_img->filePath != 'no_image.jpg') {?>
+                        <p class="avtor_image_container">
+                            <?= Html::img($avtor_img->getPath(), ['alt' => 'Магадеев Тансык', 'class' => 'img-fluid']) ?>
+                        </p>
+                    <?php } ?>
                     <div class="about_button btn btn-default" data-toggle="modal" data-target="#myModal">Подробнее о специализации</div>
                     <div class="modal fade" id="myModal" role="dialog">
                         <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-body">
-                                    <?= $main->full_about ?>
-
-                                </div>
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <button type="button" class="bootstrap_close_button close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <?= $main->full_about ?>
+                                    </div>
                             </div>
                         </div>
                     </div>

@@ -4,8 +4,6 @@ namespace app\models;
 use yii\db\ActiveRecord;
 
 class Article extends ActiveRecord{
-
-
     public function behaviors()
     {
         return [
@@ -14,6 +12,4 @@ class Article extends ActiveRecord{
             ]
         ];
     }
-
-
 }

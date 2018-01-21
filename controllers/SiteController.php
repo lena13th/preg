@@ -109,7 +109,7 @@ class SiteController extends AppController
             return Document::find()->where(['published' => 1])->all();
         }, 60, $dependency2);
 
-        $this->setMeta('Блог врача-хирург Тансык Магадеева', '', $main->name);
+        $this->setMeta('Беременность +. Блог врача-хирурга. Тансык Магадеев', '', $main->name);
 
         return $this->render('index', compact( 'main','pages', 'documents', 'isIndex'));
     }
@@ -123,7 +123,7 @@ class SiteController extends AppController
         $hemostas = Yii::$app->db->cache(function ($db) {
             return Page::find()->where(['alias' => 'hemostas'])->one();
         }, 60, $dependency);
-        $this->setMeta('Гемостазиология', '', 'Гемостазиология. Блог врача-хирурга Тансык Магадеева');
+        $this->setMeta('Гемостазиология', '', 'Гемостазиология. Блог врача-хирурга. Тансык Магадеев');
 
         return $this->render('hemostas', compact( 'hemostas'));
     }
@@ -131,7 +131,7 @@ class SiteController extends AppController
 
     public function actionReviews()
     {
-        $this->setMeta('Отзывы', '', 'Отзывы. Блог врача-хирурга Тансык Магадеева');
+        $this->setMeta('Отзывы', '', 'Отзывы. Блог врача-хирурга. Тансык Магадеев');
 
         return $this->render('reviews');
     }
@@ -145,7 +145,7 @@ class SiteController extends AppController
             return Main::findOne(Yii::$app->params['company_id']);
         }, 60, $dependency);
 
-        $this->setMeta('Контакты', '', 'Контактные данные. Блог врача-хирурга Тансык Магадеева');
+        $this->setMeta('Контакты', '', 'Контактные данные. Блог врача-хирурга. Тансык Магадеев');
 
         return $this->render('contacts',compact('main'));
     }

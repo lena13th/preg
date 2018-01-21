@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Url;
+use app\components\CompanyWidget;
 ?>
 <div class="menu_container window">
     <div class="inside_window">
@@ -71,6 +72,14 @@ use yii\helpers\Url;
             >
                 <a href="<?= Url::to(['/site/contacts']) ?>"><i class="fa fa-address-card-o" aria-hidden="true"></i>
                     Контакты</a>
+            </li>
+            <li>
+                <?php
+                $vk = CompanyWidget::widget(['object'=>'vk'])
+                ?>
+                <?php if ($vk) { ?>
+                    <a href="<?= $vk ?>" class="main_vk_link" target="_blank"><i class="fa fa-vk"></i></a>
+                <?php } ?>
             </li>
         </ul>
     </div>

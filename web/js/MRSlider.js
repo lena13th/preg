@@ -23,7 +23,7 @@ $(function(){
 
 	$( document ).ready(function() {
 		/*When document (page) is ready body fadeIn slowly*/
-		$("body").css("display","none").delay(250).fadeIn(1000); 
+		// $("body").css("display","none").delay(250).fadeIn(1000);
 		/*Z is var. for position of slides, in this case - for first slide */
 		z=300;
 		bol=true;

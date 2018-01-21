@@ -2360,6 +2360,9 @@ html * {
 @media (min-width: 1200px) {
   .container {
     width: 1366px; } }
+.bootstrap_close_button {
+  font-size: 30px; }
+
 .circle {
   -webkit-border-radius: 8px !important;
   -moz-border-radius: 8px !important;
@@ -2405,9 +2408,9 @@ html * {
   -moz-border-radius: 50px !important;
   -ms-border-radius: 50px !important;
   border-radius: 50px !important;
-  font-size: 14px !important;
+  font-size: 15px !important;
   padding: 5px 15px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'AntFontLight', Arial, Helvetica, sans-serif;
   line-height: 25px; }
 
 .window {
@@ -2615,10 +2618,11 @@ input[type='button'] {
 .menu {
   list-style: none;
   padding: 0; }
+  .menu li {
+    padding: 15px 7px; }
   .menu li a, .menu li span {
     text-transform: uppercase;
     text-decoration: none;
-    padding: 15px 7px;
     display: inline-block;
     cursor: pointer; }
   .menu .submenu_expand {
@@ -2697,11 +2701,16 @@ input[type='button'] {
     font-size: 18px; }
   .main_block .site_descr_button {
     margin-top: 15px; }
-  .main_block .main_vk_link {
-    position: absolute;
-    bottom: 30px;
-    font-size: 24px;
-    color: white !important; }
+
+.index_vk_link {
+  position: absolute;
+  bottom: 30px;
+  font-size: 24px;
+  color: white !important; }
+
+.main_vk_link {
+  font-size: 24px;
+  color: #252525 !important; }
 
 /* FULLSIZE MENU */
 @media (min-width: 768px) {
@@ -2744,12 +2753,14 @@ input[type='button'] {
       font-size: 18px; }
       .menu_container .menu li a i, .menu_container .menu li span i {
         display: none; }
-    .menu_container .menu li:first-child a, .menu_container .menu li:first-child span {
+    .menu_container .menu li:first-child, .menu_container .menu li:first-child {
       padding-left: 0; }
     .menu_container .menu li .submenu_expand {
       display: none; }
     .menu_container .menu li .submenu {
       position: absolute; }
+    .menu_container .menu > li.active a {
+      border-bottom: 1px solid #00a5b0; }
     .menu_container .menu > li.active::before {
       content: '';
       border: 0px; }
@@ -2917,6 +2928,9 @@ body {
   .seak_index_block .seak_index_button {
     display: block; }
 
+.avtor_image_container {
+  text-align: center; }
+
 .about_index_block {
   background-color: #fafafa;
   padding: 25px;
@@ -2928,13 +2942,60 @@ body {
 .document_index {
   min-height: 620px; }
 
+@keyframes width {
+  from {
+    width: 0; }
+  to {
+    width: 100px; } }
+@keyframes height {
+  from {
+    height: 0; }
+  to {
+    height: calc(100%); } }
 .document_index_desciption {
   font-family: 'ZetaAntFont', Arial, Helvetica, sans-serif;
   font-size: 16px;
   color: #9b9b9b;
   height: 180px;
+  position: relative;
   padding: 10px 0; }
+  .document_index_desciption:before {
+    display: block;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -20px;
+    height: 1px;
+    width: 0;
+    background-color: #eaeaea; }
+  .document_index_desciption:after {
+    display: block;
+    content: "";
+    position: absolute;
+    left: -20px;
+    top: 0;
+    height: 0;
+    width: 1px;
+    background-color: #eaeaea; }
 
+.main_vk_link {
+  display: none; }
+
+@media screen and (min-width: 768px) {
+  .document_index_desciption {
+    height: auto; }
+
+  .document_index_active .document_index_desciption:before {
+    animation-duration: .6s;
+    animation-name: width;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-delay: 0.7s; }
+  .document_index_active .document_index_desciption:after {
+    animation-duration: .6s;
+    animation-name: height;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards; } }
 .document_index_image {
   position: absolute; }
   .document_index_image img {
@@ -3111,11 +3172,7 @@ body {
     margin: 50px 0 0 0; }
 
   .document_index_image img {
-    width: 264px !important; }
-
-  .document_index_desciption {
-    height: 110px;
-    padding: 0; } }
+    width: 264px !important; } }
 .about_button {
   margin: 0 auto; }
 

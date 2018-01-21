@@ -1,7 +1,7 @@
 .breadcrumbs {
   margin-bottom: 20px;
   border: 1px solid #f4f4f4;
-  background: rgba(241, 245, 247, 0.41);
+  background: $white_blue;
   @include border-radius(5px);
   padding: 20px;
 }

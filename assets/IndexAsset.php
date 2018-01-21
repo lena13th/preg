@@ -24,6 +24,7 @@ class IndexAsset extends AssetBundle
         'js/main.js',
         'js/documents.js',
         'js/MRSlider.js',
+        'js/scroll.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

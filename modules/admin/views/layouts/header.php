@@ -37,7 +37,7 @@ use yii\helpers\Url;
                         </li>
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Настройки</a>
+                                <a href="<?= Url::to('/user/settings/profile') ?>" class="btn btn-default btn-flat">Настройки</a>
                             </div>
                             <div class="pull-right">
                                 <?= Html::a(

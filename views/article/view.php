@@ -13,7 +13,10 @@ $this->params['active_page'][] = 'article';
 </ul>
 
 <h1><?= $article->title ?> </h1>
-
+    <?php $img = $article->getImage(); ?>
+    <?php if (!preg_match('/placeHolder/', $img->getPath())) { ?>
+    <?= Html::img('/'.$img->getPath(), ['alt' => $article->title, 'class' => 'img-fluid']) ?>
         <?= $article->content ?>
         <?= $article->code ?>
-
+    <?php } ?>
+<!--placeHolder_350x-->

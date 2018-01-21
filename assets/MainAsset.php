@@ -19,6 +19,7 @@ class MainAsset extends AssetBundle
     ];
     public $js = [
        'js/menu.js',
+       'js/wishlist_full.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

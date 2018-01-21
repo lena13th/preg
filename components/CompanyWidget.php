@@ -36,6 +36,8 @@ class CompanyWidget extends Widget{
                 return $this->company->phone; break;
             case 'email':
                 return $this->company->email; break;
+            case 'vk':
+                return $this->company->vk; break;
         }
 
 	}

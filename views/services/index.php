@@ -1,6 +1,7 @@
+
 <?php
 use yii\helpers\Url;
-
+use yii\helpers\Html;
 $this->params['active_page'][] = 'services';
 ?>
     <ul class="breadcrumbs col-xs-12 col-md-12">
@@ -16,13 +17,17 @@ $this->params['active_page'][] = 'services';
                 <div class="col-xs-12 col-sm-6 col-md-4">
                     <div class="page_item_block">
                         <div class="h4"><?= $service->name ?></div>
-                        <?= $service->description ?>
+                        <div class="page_item_description"><?= $service->description ?></div>
                         <div class="page_item_image">
-                            <?= $service->image ?>
+                            <?//= $disease->description ?>
+                            <?php $img = $service->getImage(); ?>
+
+                            <?= Html::img('/'.$img->getPath('350x'), ['alt' => $service->name, 'class' => 'img-fluid']) ?>
                         </div>
-                        <?= $service->price ?>
-                        <br><br>
-                        <a class="btn btn-primary" href="<?= Url::to(['/services/view', 'id' => $service->id]) ?>"> Подробнее</a>
+                        <div class="page_item_price_and_link">
+                            <div class="h4"><?= $service->price ?></div>
+                            <a class="btn btn-primary" href="<?= Url::to(['/services/view', 'id' => $service->id]) ?>"> Подробнее</a>
+                        </div>
                     </div>
                 </div>
             <?php endforeach; ?>
