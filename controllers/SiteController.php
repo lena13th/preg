@@ -50,20 +50,20 @@ class SiteController extends AppController
         ];
     }
 
-    public function actionLogin()
-    {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        }
-        return $this->render('login', [
-            'model' => $model,
-        ]);
-    }
+//    public function actionLogin()
+//    {
+//        if (!Yii::$app->user->isGuest) {
+//            return $this->goHome();
+//        }
+//
+//        $model = new LoginForm();
+//        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+//            return $this->goBack();
+//        }
+//        return $this->render('login', [
+//            'model' => $model,
+//        ]);
+//    }
 
     /**
      * Logout action.
@@ -150,20 +150,20 @@ class SiteController extends AppController
         return $this->render('contacts',compact('main'));
     }
 
-    public function actionSignup(){
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-        $model = new SignupForm();
-        if($model->load(\Yii::$app->request->post()) && $model->validate()){
-            $user = new User();
-            $user->username = $model->username;
-            $user->password = \Yii::$app->security->generatePasswordHash($model->password);
-            if($user->save()){
-                return $this->goHome();
-            }
-        }
-
-        return $this->render('signup', compact('model'));
-    }
+//    public function actionSignup(){
+//        if (!Yii::$app->user->isGuest) {
+//            return $this->goHome();
+//        }
+//        $model = new SignupForm();
+//        if($model->load(\Yii::$app->request->post()) && $model->validate()){
+//            $user = new User();
+//            $user->username = $model->username;
+//            $user->password = \Yii::$app->security->generatePasswordHash($model->password);
+//            if($user->save()){
+//                return $this->goHome();
+//            }
+//        }
+//
+//        return $this->render('signup', compact('model'));
+//    }
 }

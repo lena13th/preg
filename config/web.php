@@ -41,17 +41,21 @@ $config = [
         ],
         'user' => [
             'class' => 'dektrium\user\Module',
+            'controllerMap' => [
+                'settings' => 'app\modules\admin\controllers\AdminSettingsController'
+            ],
+            'urlPrefix' => 'admin',
             'enableRegistration' => false,
             'confirmWithin' => 21600,
             'cost' => 12,
             'admins' => ['admin', 'rustvk'],
+
             'mailer' => [
                 'sender'                => 'mr-15@mail.ru', // or ['no-reply@myhost.com' => 'Sender name']
                 'welcomeSubject'        => 'Регистрация на сайте Беременность +',
                 'confirmationSubject'   => 'Подтверждения смены пароля',
                 'reconfirmationSubject' => 'Подтверждения смены email',
                 'recoverySubject'       => 'Восстановление аккаунта',
-
 
 //                'class' => 'yii\swiftmailer\Mailer',
                 // send all mails to a file by default. You have to set
@@ -85,6 +89,13 @@ $config = [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@dektrium/user/views' => '@app/modules/admin/views/user'
+                ],
+            ],
+        ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             // send all mails to a file by default. You have to set
@@ -110,7 +121,6 @@ $config = [
             ],
         ],
         'db' => $db,
-
         'urlManager' => [
             'baseUrl' => $baseUrl,
             'enablePrettyUrl' => true,
@@ -131,7 +141,7 @@ $config = [
                 'reviews/' => 'site/reviews',
                 'contacts/' => 'site/contacts',
                 'services/' => 'services/index',
-                'login/' => 'site/login',
+//                'login/' => 'site/login',
                 'admin/main/' => 'admin/main/view',
 
             ],
