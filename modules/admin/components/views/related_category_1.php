@@ -1,0 +1,4 @@
+<?php
+echo $pages->name;
+
+?>
